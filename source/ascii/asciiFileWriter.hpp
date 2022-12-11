@@ -41,6 +41,8 @@ public:
         cout << "Write to " << this->fileName << endl;
     }
 
+    ~AsciiFileWriter() {};
+
     void writeFrame(Mat frame) {
         this->writer.write(frame);
         this->framesCounter++;

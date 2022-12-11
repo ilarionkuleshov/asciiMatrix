@@ -42,6 +42,8 @@ public:
         cout << this->width << "x" << this->height << ", " << this->fps << "fps" << endl;
     }
 
+    ~AsciiConverter() {};
+
     Mat getAsciiFrame(Mat frame) {
         Mat asciiFrame(this->height, this->width, CV_8UC3, Scalar(0, 0, 0));
         Mat resizedFrame, grayFrame;
