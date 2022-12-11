@@ -1,0 +1,7 @@
+.vscode/
+
+source/build/*
+!source/build/.gitkeep
+
+source/data/*
+!source/data/.gitkeep
