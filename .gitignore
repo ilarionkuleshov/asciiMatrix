@@ -3,5 +3,9 @@
 source/build/*
 !source/build/.gitkeep
 
+source/release/*
+!source/release/.gitkeep
+
 source/data/*
 !source/data/.gitkeep
+!source/data/icon.png
