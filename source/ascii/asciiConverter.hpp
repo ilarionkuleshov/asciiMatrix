@@ -13,11 +13,13 @@ public:
     string chars;
     HersheyFonts font;
 
+    AsciiConverter() {};
+
     AsciiConverter(
         VideoCapture capture,
+        float redK = 0.5, float greenK = 1, float blueK = 0.5,
         int charWidth = 10, int charHeight = 15,
         string chars = "Æ@#W$9876543210?!abc;:+=-,._  ",
-        float redK = 0.5, float greenK = 1, float blueK = 0.5,
         float fontSize = 0.4
     ) {
         this->width = capture.get(3);

@@ -9,7 +9,7 @@ using namespace cv;
 class AsciiFileWriter {
 public:
     string fileName;
-    int width, height, codec, totalFrames, framesCounter, startTime;
+    int width, height, codec, totalFrames, framesCounter;
     float fps, prevLoggedProgress, loggingProgressStep;
     VideoWriter writer;
 
@@ -28,7 +28,6 @@ public:
         this->fileName = fileName;
         this->loggingProgressStep = loggingProgressStep;
         this->framesCounter = 0;
-        this->startTime = time(0);
         this->prevLoggedProgress = 0;
         this->codec = VideoWriter::fourcc('m', 'p', '4', 'v');
 
@@ -43,17 +42,15 @@ public:
 
     ~AsciiFileWriter() {};
 
-    void writeFrame(Mat frame) {
+    int writeFrame(Mat frame) {
         this->writer.write(frame);
         this->framesCounter++;
         float progress = ((float)this->framesCounter / (float)this->totalFrames);
         if(progress - this->prevLoggedProgress >= this->loggingProgressStep) {
-            int deltaTime = time(0) - this->startTime;
-            float remainingTime = (deltaTime / progress) - deltaTime;
             this->prevLoggedProgress = progress;
-            cout << (int)(progress * 100) << "% Remaining ~" <<
-                setprecision(3) << remainingTime << " seconds" << endl;
+            return (int)(progress * 100);
         }
+        return 0;
     }
 
     void release() {
