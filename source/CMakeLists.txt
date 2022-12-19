@@ -6,6 +6,9 @@ set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 
+find_package(OpenCV REQUIRED)
+include_directories(${OpenCV_INCLUDE_DIRS})
+
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
@@ -42,7 +45,7 @@ else()
     endif()
 endif()
 
-target_link_libraries(asciiMatrix PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
+target_link_libraries(asciiMatrix PRIVATE Qt${QT_VERSION_MAJOR}::Widgets ${OpenCV_LIBS})
 
 set_target_properties(asciiMatrix PROPERTIES
     MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com
